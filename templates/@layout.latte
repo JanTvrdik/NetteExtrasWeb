@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta n:ifset="$robots" name="robots" content="{$robots}">
+
+	<title>{block #titleTag}{include #title} | Addony pro Nette Framework{/block}</title>
+
+	<!-- Plugins -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+	<script src="{$basePath}/assets/plugins/modernizr/modernizr-1.6.min.js"></script>
+
+	<script src="{$basePath}/assets/js/listeners.js"></script>
+	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/assets/css/screen.css">
+	{block #head}{/block}
+</head>
+
+<body id="index" class="home">
+
+	<header id="header" class="body">
+		<hgroup>
+			<h1><a n:href="/homepage">Nette Extras</a></h1>
+			<h2>Sbírka komponent, rozšíření a útržků kódu pro Nette Framework</h2>
+		</hgroup>
+	</header>
+
+	<section id="content" class="body">
+		{include #content}
+	</section>
+
+	<footer id="footer" class="body">
+		<section class="contact">
+			<strong><a href="http://merxes.cz/">Jan Tvrdík</a></strong><br>
+			<a href="http://github.com/JanTvrdik">GitHub</a> | <a href="http://twitter.com/JanTvrdik">Twitter</a>
+		</section>
+
+		<section class="serverInfo">
+			PHP {=PHP_VERSION}<br>
+			{=Nette\Framework::NAME} {=Nette\Framework::VERSION} ({=Nette\Framework::REVISION})<br>
+			<img src="{$basePath}/assets/images/nette-powered.gif" alt="Powered by Nette Framework">
+		</section>
+	</footer>
+
+</body>
+</html>
