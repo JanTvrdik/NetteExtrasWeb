@@ -1,0 +1,44 @@
+{default $hideChangelog = FALSE}
+
+<section id="addonInfo">
+
+	<img n:ifset="$img" src="{$basePath}/assets/images/{$img}" class="illustration">
+
+	<table class="vertical">
+		<tr>
+			<th>Verze</th>
+			<td>{$version} {if !$hideChangelog}(<a n:href="changelog">seznam změn</a>){/if}</td>
+		</tr>
+		<tr n:ifset="$updated">
+			<th>Aktualizováno</th>
+			<td>{$updated}</td>
+		</tr>
+		<tr n:ifset="$req">
+			<th>Požadavky</th>
+			<td>{$req}</td>
+		</tr>
+		<tr>
+			<th>Autor</th>
+			<td>{$author}</td>
+		</tr>
+		<tr>
+			<th>Licence</th>
+			<td>{$licence}</td>
+		</tr>
+	</table>
+
+	<a id="downloadButton"><img src="{$basePath}/assets/images/download-button.gif" alt="Stáhnout {$name}"></a>
+
+	<div id="downloadOptions">
+		<ul>
+			{var $nameX = Nette\String::webalize($name, NULL, FALSE)}
+			{var $prefix = "$basePath/downloads/$nameX/$nameX-$version"}
+			<li><a href="{$prefix}-PHP-5.3">{$name} pro PHP 5.3</a> (se jmennými prostory)</li>
+			<li><a href="{$prefix}-PHP-5.2">{$name} pro PHP 5.2</a></li>
+			<li><a href="{$prefix}-PHP-5.2-nonprefix">{$name} pro PHP 5.2 bez prefixů</a></li>
+		</ul>
+	</div>
+
+	<div n:ifset="$img" style="clear: both;"></div>
+
+</section>

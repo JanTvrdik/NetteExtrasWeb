@@ -1,0 +1,99 @@
+{block #content}
+
+	<header>
+		<hgroup>
+			<h1 n:inner-block="title">FormMacros</h1>
+			<h2>Makra pro usnadnění manuálního vykreslování formulářů</h2>
+		</hgroup>
+	</header>
+
+	{include "../@addonInfo.latte"
+		name          => "FormMacros",
+		version       => "2.0",
+		req           => "Nette Framework 2.0-dev",
+		author        => "Jan Marek, Jan Tvrdík",
+		licence       => "MIT"
+	}
+
+
+	<texy>
+
+		Instalace
+		=========
+
+		1. Zkontrolujte, zda splňujete **minimální požadavky**.
+		2. **Stáhněte** si distribuční balík.
+		3. Adresář `FormMacros` **zkopírujte** k ostatním knihovnám ve vaší aplikaci (např. do `libs/FormMacros`).
+		4. **Zaregistrujte** makra.
+			/--code php
+				abstract class BasePresenter extends Nette\Application\Presenter
+				{
+					...
+
+					public function templatePrepareFilters($template)
+					{
+						$template->registerFilter($latte = new Nette\Templates\LatteFilter());
+						JanTvrdik\Templates\FormMacros::register($latte);
+					}
+
+				}
+			\--
+
+
+
+
+		Podrobnosti
+		============
+
+		Seznam maker
+		------------
+		- `{form addEventForm, ...} ... {/form}`
+		- `{formContainer infoContainer} ... {/formContainer}`
+		- `{label email}`
+		- `{input email}`
+		- `{inputValue email}`
+
+		Seznam modifikátorů
+		-------------------
+		- `{form ...}` - `class`, `style`
+		- `{input ...}` - `value`, `caption`, `size`, `rows`, `cols`, `placeholder`, `class`, `style`
+		- `{label ...}` - `text`, `class`, `style`
+
+
+		Ukázka použití
+		==============
+
+		.{lang: cs}
+		/--code html
+			{form registrationForm}
+				<p class="error" n:foreach="$formErrors as $error">{$error}</p>
+				<table>
+					<tr>
+						<th>{label name, text => "Username"}</th>
+						<td>{input name}</td>
+					</tr>
+					<tr>
+						<th>{label password, text => "Password"}</th>
+						<td>{input password}</td>
+					</tr>
+					{formContainer contact}
+						<tr>
+							<th>{label mail, text => "E-mail"}</th>
+							<td>{input mail}</td>
+						</tr>
+						<tr>
+							<th>{label twitter, text => "Twitter"}</th>
+							<td>{input twitter}</td>
+						</tr>
+					{/formContainer}
+					<tr>
+						<th></th>
+						<td>{input register, caption => "Register"}</td>
+					</tr>
+				</table>
+			{/form}
+		\--
+
+	</texy>
+
+{/block}

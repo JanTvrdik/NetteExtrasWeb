@@ -1,0 +1,50 @@
+{block #content}
+
+	<header>
+		<hgroup>
+			<h1 n:inner-block="title">BaseControl</h1>
+		</hgroup>
+	</header>
+
+	{include ../@addonInfo.latte
+		name          => "BaseControl",
+		version       => "0.1",
+		updated       => "6. 12. 2010",
+		author        => "Jan Tvrdík",
+		licence       => "MIT",
+		hideChangelog => TRUE,
+	}
+
+	<texy>
+
+		Základní informace
+		==================
+
+		- Automaticky nastaví cestu k šabloně (např. komponentě `FooControl` nastaví jako šablonu `FooControl.latte`)
+
+
+		Ukázka použití
+		==============
+
+		**FooControl.php** .{margin-top: 20px}
+		/--code php
+			class FooControl extends BaseControl
+			{
+				public function render()
+				{
+					$this->template->names = array('John Doe', 'Harry Wotsit');
+					$this->template->render();
+				}
+			}
+		\--
+
+		**FooControl.latte** .{margin-top: 20px}
+		/--code html
+			<ul n:inner-foreach="$names as $name">
+				<li>{$name}</li>
+			</ul>
+		\--
+
+	</texy>
+
+{/block}

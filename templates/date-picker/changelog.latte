@@ -1,0 +1,22 @@
+{block #content}
+
+	<header>
+		<h1 n:inner-block="title">Seznam změn v DatePickeru</h1>
+	</header>
+
+	<texy>
+
+		Verze 2.1
+		=========
+		- K omezení minimálního a maximálního vybratelného data slouží nyní `$dp->addRule(Form::RANGE, 'error message', arrax($min, $max))`.
+		- Zrušena možnost upravit si formát data pomocí PHP. Použijte místo toho lokalizační skripty.
+		- Opravena chyba v metodě `setValue()` při předání instance `DateTime`.
+		- Opraveno možné selhání při přiřazování třídy `inputu`.
+
+		Verze 2.0
+		=========
+		- Kompatibilita s HTML 5
+
+	</texy>
+
+{/block}
