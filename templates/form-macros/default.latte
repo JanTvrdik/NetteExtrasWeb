@@ -34,7 +34,7 @@
 					public function templatePrepareFilters($template)
 					{
 						$template->registerFilter($latte = new Nette\Templates\LatteFilter());
-						JanTvrdik\Templates\FormMacros::register($latte);
+						JanTvrdik\Templates\FormMacros::register($latte->getHandler());
 					}
 
 				}
